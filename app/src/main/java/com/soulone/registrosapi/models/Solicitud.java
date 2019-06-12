@@ -1,17 +1,15 @@
 package com.soulone.registrosapi.models;
 
-public class solicitudModel {
+public class Solicitud {
     Integer id;
     String email;
     String tipo;
     String motico;
 
-
-
-    public solicitudModel() {
+    public Solicitud() {
     }
 
-    public solicitudModel(Integer id, String email, String tipo, String motico) {
+    public Solicitud(Integer id, String email, String tipo, String motico) {
         this.id = id;
         this.email = email;
         this.tipo = tipo;
@@ -52,7 +50,7 @@ public class solicitudModel {
 
     @Override
     public String toString() {
-        return "solicitudModel{" +
+        return "Solicitud{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", tipo='" + tipo + '\'' +
