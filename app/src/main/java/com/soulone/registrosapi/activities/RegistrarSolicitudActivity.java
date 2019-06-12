@@ -6,15 +6,29 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.soulone.registrosapi.R;
 
-public class RegistrarSolicitudActivity extends AppCompatActivity {
+public class RegistrarSolicitudActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    String[]solicitud = {"Ingreso","Matricula","Reingreso"
+};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_solicitud);
+
+        //Getting the instance of Spinner and applying OnItemSelectedListener on it
+        Spinner spin = (Spinner) findViewById(R.id.spTypeSolicitud);
+        spin.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+
+        //Array Adapater
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,solicitud);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -28,4 +42,14 @@ public class RegistrarSolicitudActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
+

@@ -36,7 +36,7 @@
             android:text="Tipo de solicitud" />
 
         <Spinner
-            android:id="@+id/spTypeSolicituf"
+            android:id="@+id/spTypeSolicitud"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
