@@ -23,7 +23,7 @@
     <include layout="@layout/content_registrar_solicitud" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonRegistrar"
         android:layout_gravity="bottom|center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

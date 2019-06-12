@@ -9,8 +9,7 @@ public class Solicitud {
     public Solicitud() {
     }
 
-    public Solicitud(Integer id, String email, String tipo, String motico) {
-        this.id = id;
+    public Solicitud( String email, String tipo, String motico) {
         this.email = email;
         this.tipo = tipo;
         this.motico = motico;

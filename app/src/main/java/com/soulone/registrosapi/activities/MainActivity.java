@@ -1,18 +1,31 @@
 package com.soulone.registrosapi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.soulone.registrosapi.Interfaces.configuracionRetrofit;
 import com.soulone.registrosapi.R;
+import com.soulone.registrosapi.adapters.SolicitudAdapter;
+import com.soulone.registrosapi.models.Solicitud;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+    private RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        recyclerView=findViewById(R.id.rvSolcitudes);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        iniciar();
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(new Intent(getApplicationContext(),RegistrarSolicitudActivity.class));
             }
         });
     }
@@ -50,5 +65,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void iniciar(){
+        Call<List<Solicitud>> listCall= configuracionRetrofit.jsonApiRetrofit().getSolicitudes();
+        listCall.enqueue(new Callback<List<Solicitud>>() {
+            @Override
+            public void onResponse(Call<List<Solicitud>> call, Response<List<Solicitud>> response) {
+                SolicitudAdapter solicitudAdapter=new SolicitudAdapter();
+                solicitudAdapter.setPostsList(response.body());
+                recyclerView.setAdapter(solicitudAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Solicitud>> call, Throwable t) {
+
+            }
+        });
     }
 }

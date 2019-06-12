@@ -2,4 +2,8 @@
     <string name="app_name">RegistrosApi</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_registrar_solicitud">RegistrarSolicitudActivity</string>
+    <array name="solicitudes">
+        <item>--Seleccione--</item>
+        <item>Solicitud de devolucion</item>
+    </array>
 </resources>

@@ -37,7 +37,7 @@
             android:background="?android:attr/listDivider" />
 
         <TextView
-            android:id="@+id/tvSolicitudType"
+            android:id="@+id/tvDescipcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/divider"
